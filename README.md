@@ -169,7 +169,8 @@ The private subnet contains the Java/Tomcat application server.
 
 ### Screenshot
 
-![Subnets](screenshots/02-subnets.png)
+![Public Subnets us-east-1a](screenshots/02-public-subnet-us-east-1a.png)
+![Private Subnets us-east-1b](screenshots/03-private-subnet-us-east-1b.png)
 
 ------------------------------------------------------------------------
 
@@ -182,7 +183,7 @@ public subnet when the route table and security rules allow it.
 
 ### Screenshot
 
-![Internet Gateway](screenshots/03-internet-gateway.png)
+![Internet Gateway](screenshots/04-internet-gateway.png)
 
 ------------------------------------------------------------------------
 
@@ -215,7 +216,8 @@ Internet
 
 ### Screenshot
 
-![Public Route Table](screenshots/04-public-route-table.png)
+![Public Route Table](screenshots/06-public-route-table-route.png)
+![Public Route Table](screenshots/08-public-route-table-subnet-association.png)
 
 ------------------------------------------------------------------------
 
@@ -237,7 +239,7 @@ directly reachable from the internet.
 
 ### Screenshot
 
-![NAT Gateway](screenshots/06-nat-gateway.png)
+![NAT Gateway](screenshots/05-nat-gateway.png)
 
 ------------------------------------------------------------------------
 
@@ -275,7 +277,8 @@ Internet
 
 ### Screenshot
 
-![Private Route Table](screenshots/05-private-route-table.png)
+![Private Route Table](screenshots/07-private-route-table-route.png)
+![Private Route Table](screenshots/09-private-route-table-subnet-association.png)
 
 ------------------------------------------------------------------------
 
@@ -306,7 +309,8 @@ application server security group where possible.
 
 ### Screenshot
 
-![Security Groups](screenshots/07-security-groups.png)
+![Public Security Group](screenshots/10-public-security-group.png)
+![Private Security Group](screenshots/11-private-security-group.png)
 
 > For production, use least-privilege rules rather than broad
 > `0.0.0.0/0` access.
@@ -361,6 +365,10 @@ Check status:
 sudo systemctl status nginx
 ```
 
+### Screenshot
+
+![Proxy Server Public Subnet](screenshots/21-proxy-server-public-subnet)
+
 ------------------------------------------------------------------------
 
 # 13. Configure Nginx Reverse Proxy
@@ -409,7 +417,7 @@ sudo systemctl restart nginx
 
 ### Screenshot
 
-![Nginx Configuration](screenshots/08-nginx-config.png)
+![Nginx Configuration](screenshots/12-nginx-config.png)
 
 ------------------------------------------------------------------------
 
@@ -429,6 +437,10 @@ MySQL Connector
 The application server does not need a public IP.
 
 Connect through the configured jump/proxy access method.
+
+### Screenshot
+
+![Application Server Private Subnet](screenshots/22-application-server-private-subnet)
 
 ------------------------------------------------------------------------
 
@@ -503,6 +515,10 @@ Tomcat uses port:
 8080
 ```
 
+### Screenshot
+
+![Tomcat Started](screenshots/15-tomcat-start.png)
+
 ------------------------------------------------------------------------
 
 # 18. Deploy the Pre-built WAR File
@@ -545,7 +561,8 @@ The application context becomes:
 
 ### Screenshot
 
-![WAR Deployment](screenshots/09-war-deployment.png)
+![WAR Deployment](screenshots/13-war-deployment.png)
+![WAR Folder](screenshots/14-war-folder.png)
 
 > A Tomcat restart is normally not required just for copying a new WAR
 > when auto-deployment is enabled. Tomcat can detect and deploy it
@@ -572,7 +589,7 @@ Do not expose the database unnecessarily to the public internet.
 
 ### Screenshot
 
-![RDS](screenshots/10-rds.png)
+![RDS login](screenshots/16-rds-MySQL-login.png)
 
 ------------------------------------------------------------------------
 
@@ -632,10 +649,6 @@ Verify:
 ``` sql
 SHOW TABLES;
 ```
-
-### Screenshot
-
-![MySQL Table](screenshots/11-mysql-table.png)
 
 ------------------------------------------------------------------------
 
@@ -731,12 +744,6 @@ RDS-ENDPOINT
 
 with your actual values.
 
-### Screenshot
-
-![Tomcat Context Configuration](screenshots/12-context-xml.png)
-
-> Never commit real database passwords to GitHub.
-
 ------------------------------------------------------------------------
 
 # 26. Restart Tomcat After Configuration Changes
@@ -797,7 +804,7 @@ RDS MySQL :3306
 
 ### Screenshot
 
-![Application](screenshots/13-application.png)
+![Application](screenshots/17-registration-page.png)
 
 ------------------------------------------------------------------------
 
@@ -823,7 +830,9 @@ SELECT * FROM students;
 
 ### Screenshot
 
-![CRUD Application](screenshots/14-crud.png)
+![Registration Success Page](screenshots/18-registration-success-page.png)
+![Edit Record](screenshots/19-edit-record.png)
+![Database Records](screenshots/20-database-records.png)
 
 ------------------------------------------------------------------------
 
@@ -1014,21 +1023,7 @@ java-three-tier-aws-deployment/
 ├── mysql-connector.jar
 ├── README.md
 │
-└── screenshots/
-    ├── 01-vpc.png
-    ├── 02-subnets.png
-    ├── 03-internet-gateway.png
-    ├── 04-public-route-table.png
-    ├── 05-private-route-table.png
-    ├── 06-nat-gateway.png
-    ├── 07-security-groups.png
-    ├── 08-nginx-config.png
-    ├── 09-war-deployment.png
-    ├── 10-rds.png
-    ├── 11-mysql-table.png
-    ├── 12-context-xml.png
-    ├── 13-application.png
-    └── 14-crud.png
+└── screenshots
 ```
 
 ------------------------------------------------------------------------
