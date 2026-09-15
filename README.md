@@ -163,13 +163,12 @@ AZ: us-east-1b
 CIDR: 10.0.2.0/24
 ```
 
-The public subnet contains the Nginx proxy server.
-
-The private subnet contains the Java/Tomcat application server.
-
-### Screenshot
+### The public subnet contains the Nginx proxy server.
 
 ![Public Subnets us-east-1a](screenshots/02-public-subnet-us-east-1a.png)
+
+### The private subnet contains the Java/Tomcat application server.
+
 ![Private Subnets us-east-1b](screenshots/03-private-subnet-us-east-1b.png)
 
 ------------------------------------------------------------------------
