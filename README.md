@@ -141,7 +141,7 @@ VPC CIDR: 10.0.0.0/16
 
 Use the actual CIDR configured in your AWS account if different.
 
-### Screenshot
+### VPC Screenshot
 
 ![VPC](screenshots/01-vpc.png)
 
@@ -180,7 +180,7 @@ Create an Internet Gateway and attach it to the VPC.
 The Internet Gateway provides internet connectivity for resources in the
 public subnet when the route table and security rules allow it.
 
-### Screenshot
+### Internet Gateway Screenshot
 
 ![Internet Gateway](screenshots/04-internet-gateway.png)
 
@@ -213,9 +213,12 @@ Internet Gateway
 Internet
 ```
 
-### Screenshot
+### public-route-table-route Screenshot
 
 ![Public Route Table](screenshots/06-public-route-table-route.png)
+
+### public-route-table-subnet-association Screenshot
+
 ![Public Route Table](screenshots/08-public-route-table-subnet-association.png)
 
 ------------------------------------------------------------------------
@@ -236,7 +239,7 @@ The NAT Gateway allows resources in the private subnet to initiate
 outbound internet connections without making those private instances
 directly reachable from the internet.
 
-### Screenshot
+### NAT Gateway Screenshot
 
 ![NAT Gateway](screenshots/05-nat-gateway.png)
 
@@ -274,9 +277,12 @@ Internet
 > If AWS says that `0.0.0.0/0` already exists, edit the existing default
 > route instead of creating another one.
 
-### Screenshot
+### private-route-table-route Screenshot
 
 ![Private Route Table](screenshots/07-private-route-table-route.png)
+
+### private-route-table-subnet-association Screenshot
+
 ![Private Route Table](screenshots/09-private-route-table-subnet-association.png)
 
 ------------------------------------------------------------------------
@@ -306,9 +312,12 @@ Tomcat TCP 8080  Source: Nginx Proxy Server security group
 The database security group should allow MySQL traffic only from the
 application server security group where possible.
 
-### Screenshot
+### public-security-group Screenshot
 
 ![Public Security Group](screenshots/10-public-security-group.png)
+
+### private-security-group Screenshot
+
 ![Private Security Group](screenshots/11-private-security-group.png)
 
 > For production, use least-privilege rules rather than broad
@@ -364,9 +373,9 @@ Check status:
 sudo systemctl status nginx
 ```
 
-### Screenshot
+### proxy-server-public-subnet Screenshot
 
-![Proxy Server Public Subnet](screenshots/21-proxy-server-public-subnet)
+![Proxy Server Public Subnet](screenshots/21-proxy-server-public-subnet.png)
 
 ------------------------------------------------------------------------
 
@@ -414,7 +423,7 @@ Restart Nginx:
 sudo systemctl restart nginx
 ```
 
-### Screenshot
+### nginx-config Screenshot
 
 ![Nginx Configuration](screenshots/12-nginx-config.png)
 
@@ -437,9 +446,9 @@ The application server does not need a public IP.
 
 Connect through the configured jump/proxy access method.
 
-### Screenshot
+### application-server-private-subnet Screenshot
 
-![Application Server Private Subnet](screenshots/22-application-server-private-subnet)
+![Application Server Private Subnet](screenshots/22-application-server-private-subnet.png)
 
 ------------------------------------------------------------------------
 
@@ -514,7 +523,7 @@ Tomcat uses port:
 8080
 ```
 
-### Screenshot
+### tomcat-start Screenshot
 
 ![Tomcat Started](screenshots/15-tomcat-start.png)
 
@@ -558,9 +567,12 @@ The application context becomes:
 /student/
 ```
 
-### Screenshot
+### war-deployment Screenshot
 
 ![WAR Deployment](screenshots/13-war-deployment.png)
+
+### war-folder Screenshot
+
 ![WAR Folder](screenshots/14-war-folder.png)
 
 > A Tomcat restart is normally not required just for copying a new WAR
@@ -586,7 +598,7 @@ the application server as required.
 
 Do not expose the database unnecessarily to the public internet.
 
-### Screenshot
+### rds-MySQL-login Screenshot
 
 ![RDS login](screenshots/16-rds-MySQL-login.png)
 
@@ -801,7 +813,7 @@ student.war
 RDS MySQL :3306
 ```
 
-### Screenshot
+### registration-page Screenshot
 
 ![Application](screenshots/17-registration-page.png)
 
@@ -827,10 +839,16 @@ USE studentapp;
 SELECT * FROM students;
 ```
 
-### Screenshot
+### registration-success-page Screenshot
 
 ![Registration Success Page](screenshots/18-registration-success-page.png)
+
+### edit-record Screenshot
+
 ![Edit Record](screenshots/19-edit-record.png)
+
+### database-records Screenshot
+
 ![Database Records](screenshots/20-database-records.png)
 
 ------------------------------------------------------------------------
